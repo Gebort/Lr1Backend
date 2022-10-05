@@ -1,4 +1,4 @@
-package edu.festu.ivankuznetsov.springsamplebo941pia.entity
+package edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto
 
 import javax.persistence.*
 
@@ -11,9 +11,5 @@ class GenreEntity(
     val genreId: Long? = null,
 
     val genre: String = "",
-
-//    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "genre")
-//    val books: Set<BookEntity> = setOf()
-
 
 )

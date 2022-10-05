@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping
  * контроллер оценок
  * */
 @Controller
-class ScoreController(
+class BookController(
     private val bookService: BookService,
     private val authorService: AuthorService,
 ) {

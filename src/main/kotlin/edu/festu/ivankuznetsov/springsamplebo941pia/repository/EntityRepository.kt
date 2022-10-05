@@ -1,6 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.repository
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity.*
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.*
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
@@ -12,9 +12,6 @@ interface AuthorRepository: JpaRepository<AuthorEntity, Long>
 
 @Repository
 interface RatingRepository: JpaRepository<BookRating, Long>
-
-@Repository
-interface AuthorEntityRepository: JpaRepository<AuthorEntity, Long>
 
 @Repository
 interface BuyerRepository: JpaRepository<BuyerEntity, Long>

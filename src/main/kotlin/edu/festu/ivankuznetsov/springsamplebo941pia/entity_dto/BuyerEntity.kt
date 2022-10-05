@@ -1,4 +1,4 @@
-package edu.festu.ivankuznetsov.springsamplebo941pia.entity
+package edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto
 
 import javax.persistence.*
 
@@ -15,5 +15,5 @@ class BuyerEntity(
     val lastName: String? = null,
 
     @OneToMany(mappedBy = "buyer")
-    val books: Set<BookRating> = setOf(),
+    val ratings: List<BookRating> = listOf(),
 )

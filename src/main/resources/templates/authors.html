@@ -13,7 +13,12 @@
       <th:block th:each="author:${authors}">
         <div>
           <p th:text="${author.getFirstName() + ' ' + author.getLastName()}"></p>
-          <p th:text="${'Total books count: ' + author.getBooks().size}"></p>
+          <p th:text="${'Books: '}"></p>
+          <th:block th:each="book:${author.getBooks()}">
+            <div>
+              <p th:text="${book.getTitle()}"></p>
+            </div>
+          </th:block>
           <p>===============================</p>
         </div>
       </th:block>

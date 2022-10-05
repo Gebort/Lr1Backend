@@ -1,4 +1,4 @@
-package edu.festu.ivankuznetsov.springsamplebo941pia.entity
+package edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto
 
 import javax.persistence.*
 
@@ -21,5 +21,5 @@ class BookRating(
     val book: BookEntity? = null,
 
     //from 1 to 5
-    val rating: Int = 1,
+    val rating: Double? = null,
 )
