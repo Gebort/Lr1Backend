@@ -14,4 +14,8 @@ class BookServiceImpl(
     override fun getAll(): List<BookEntity> {
         return bookRepository.findAll()
     }
+
+    override fun getById(id: Long): BookEntity {
+        return bookRepository.findById(id).orElseThrow()
+    }
 }

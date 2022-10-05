@@ -7,13 +7,14 @@
     <body>
         <div>
             <a href="/">Книги</a>
-            <a href="authors">Авторы</a>
+            <a href="/authors">Авторы</a>
         </div>
         <div>
             <th:block th:each="book:${books}">
                 <div>
-                    <p th:text="${book.getTitle() + ', ' + book.getGenre().getGenre()}"></p>
-                    <p th:text="${'Total ratings -  ' + book.getTotalRatings() + ', average - ' + book.getAverageRating()}"></p>
+                    <h3 th:text="${book.getTitle() + ', ' + book.getGenre().getGenre()}"></h3>
+                    <a th:href="@{'/rating/'+${book.getBookId()}}"
+                       th:text="${'Total ratings -  ' + book.getTotalRatings() + ', average - ' + book.getAverageRating()}"></a>
                     <p th:text="${'Authors: '}"></p>
                     <th:block th:each="author:${book.getAuthors()}">
                         <div>
