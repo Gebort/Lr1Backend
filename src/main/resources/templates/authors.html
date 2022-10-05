@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+  </head>
+  <body>
+    <div>
+      <a href="/">Книги</a>
+      <a href="authors">Авторы</a>
+    </div>
+    <div>
+      <th:block th:each="author:${authors}">
+        <div>
+          <p th:text="${author.getFirstName() + ' ' + author.getLastName()}"></p>
+          <p th:text="${'Total books count: ' + author.getBooks().size}"></p>
+          <p>===============================</p>
+        </div>
+      </th:block>
+    </div>
+  </body>
+</html>
