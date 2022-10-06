@@ -8,6 +8,7 @@
     <div>
       <a href="/books">Книги</a>
       <a href="/authors">Авторы</a>
+      <a href="/genres">Жанры</a>
     </div>
     <div>
       <th:block th:each="author:${authors}">
@@ -16,7 +17,8 @@
           <p th:text="${'Books: '}"></p>
           <th:block th:each="book:${author.getBooks()}">
             <div>
-              <p th:text="${book.getTitle()}"></p>
+              <a th:href="@{'/rating/'+${book.getBookId()}}"
+                 th:text="${book.getTitle()}"></a>
             </div>
           </th:block>
           <p>===============================</p>

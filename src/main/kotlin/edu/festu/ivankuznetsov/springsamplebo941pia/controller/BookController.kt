@@ -18,7 +18,10 @@ class BookController(
     private val authorService: AuthorService,
     private val genreService: GenreService
 ) {
-
+    @GetMapping("/")
+    fun getDefault(model: Model): String {
+        return getBooks(model)
+    }
     @GetMapping("/books")
     fun getBooks(model: Model): String {
         model["books"] = bookService.getAll()

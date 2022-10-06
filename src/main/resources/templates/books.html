@@ -17,11 +17,9 @@
                     <a th:href="@{'/rating/'+${book.getBookId()}}"
                        th:text="${'Total ratings -  ' + book.getTotalRatings() + ', average - ' + book.getAverageRating()}"></a>
                     <p th:text="${'Authors: '}"></p>
-                    <th:block th:each="author:${book.getAuthors()}">
-                        <div>
-                            <p th:text="${author.getFirstName() + ' ' + author.getLastName()}"></p>
-                        </div>
-                    </th:block>
+                        <span th:each="author:${book.getAuthors()}"
+                              th:text="${author.getFirstName() + ' ' + author.getLastName() + ' '}">
+                        </span>
                     <p>===============================</p>
                 </div>
             </th:block>
