@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+  </head>
+  <body>
+    <div>
+      <a href="/books">Книги</a>
+      <a href="/authors">Авторы</a>
+      <a href="/genres">Жанры</a>
+    </div>
+    <div>
+      <h3>Genres</h3>
+      <th:block th:each="genre:${genres}">
+        <div>
+          <a th:href="@{'/books/'+${genre.getGenre()}}"
+             th:text="${genre.getGenre()}"></a>
+        </div>
+      </th:block>
+    </div>
+  </body>
+</html>
