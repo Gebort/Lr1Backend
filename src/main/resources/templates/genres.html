@@ -11,11 +11,11 @@
       <a href="/genres">Жанры</a>
     </div>
     <div>
-      <h3>Genres</h3>
-      <th:block th:each="genre:${genres}">
+      <h1>Genres</h1>
+      <th:block th:each="pair:${genres}">
         <div>
-          <a th:href="@{'/books/'+${genre.getGenre()}}"
-             th:text="${genre.getGenre()}"></a>
+          <a th:href="@{'/books/'+${pair.getFirst().getGenre()}}"
+             th:text="${pair.getFirst().getGenre() + ' - ' + pair.getSecond() + ' book(s)'}"></a>
         </div>
       </th:block>
     </div>

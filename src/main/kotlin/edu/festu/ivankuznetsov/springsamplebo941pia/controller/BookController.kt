@@ -29,8 +29,10 @@ class BookController(
     }
     @GetMapping("/books/{genreTitle}")
     fun getBooks(@PathVariable genreTitle: String, model: Model): String {
-        val genre = genreService.findByTitle(genreTitle)
-        model["books"] = bookService.getAllByGenre(genre)
+        genreService.findByTitle(genreTitle).let {
+            model["genre"] = it
+            model["books"] = bookService.getAllByGenre(it)
+        }
         return "books"
     }
     @GetMapping("/authors")
@@ -38,6 +40,13 @@ class BookController(
         model["authors"] = authorService.getAll()
         return "authors"
     }
+
+    @GetMapping("/authors/{authorId}")
+    fun getAuthors(@PathVariable authorId: String, model: Model): String {
+        model["author"] = authorService.getById(authorId.toLong())
+        return "author_page"
+    }
+
        @GetMapping("/rating/{bookId}")
     fun getBookRating(@PathVariable bookId: String, model: Model): String {
         model["book"] = bookService.getById(bookId.toLong())
@@ -45,7 +54,9 @@ class BookController(
     }
     @GetMapping("/genres")
     fun getGenres(model: Model): String {
-        model["genres"] = genreService.findAll()
+        model["genres"] = genreService.findAll().map { genre ->
+            Pair(genre, bookService.getAllByGenre(genre).size)
+        }
         return "genres"
     }
 

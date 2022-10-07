@@ -11,16 +11,20 @@
             <a href="/genres">Жанры</a>
         </div>
         <div>
+            <h1 th:if="${genre != null}" th:text="${genre.getGenre() + ' genre - ' + books.size + ' book(s)'}"></h1>
             <th:block th:each="book:${books}">
                 <div>
                     <h3 th:text="${book.getTitle() + ', ' + book.getGenre().getGenre()}"></h3>
                     <a th:href="@{'/rating/'+${book.getBookId()}}"
                        th:text="${'Total ratings -  ' + book.getTotalRatings() + ', average - ' + book.getAverageRating()}"></a>
                     <p th:text="${'Authors: '}"></p>
-                        <span th:each="author:${book.getAuthors()}"
-                              th:text="${author.getFirstName() + ' ' + author.getLastName() + ' '}">
-                        </span>
-                    <p>===============================</p>
+                    <th:block th:each="author:${book.getAuthors()}">
+                        <div>
+                            <a th:href="@{'/authors/'+${author.getAuthorId()}}"
+                            th:text="${author.getFirstName() + ' ' + author.getLastName() + ' '}"></a>
+                            <p>===============================</p>
+                        </div>
+                    </th:block>
                 </div>
             </th:block>
         </div>

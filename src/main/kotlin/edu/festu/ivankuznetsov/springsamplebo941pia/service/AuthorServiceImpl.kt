@@ -13,4 +13,8 @@ class AuthorServiceImpl(
         return authorRepository.findAll()
     }
 
+    override fun getById(authorId: Long): AuthorEntity {
+        return authorRepository.findById(authorId).orElseThrow()
+    }
+
 }
