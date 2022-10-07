@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${author.getFirstName() + ' ' + author.getLastName()}"></title>
+</head>
+<body>
+<div>
+  <a href="/books">Books</a>
+  <a href="/authors">Authors</a>
+  <a href="/genres">Genres</a>
+</div>
+<div>
+      <h1 th:text="${author.getFirstName() + ' ' + author.getLastName()}"></h1>
+      <h3 th:text="${author.getBooks().size + ' book(s): '}"></h3>
+      <th:block th:each="book:${author.getBooks()}">
+        <div>
+            <a th:href="@{'/rating/'+${book.getBookId()}}"
+             th:text="${book.getTitle()}"></a>
+            <p th:text="${book.getGenre().getGenre() + ', rating -  ' + book.getAverageRating()}"></p>
+            <p>===============================</p>
+        </div>
+      </th:block>
+</div>
+</body>
+</html>
