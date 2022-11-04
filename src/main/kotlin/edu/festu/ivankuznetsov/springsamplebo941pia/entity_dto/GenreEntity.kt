@@ -12,4 +12,12 @@ class GenreEntity(
 
     val genre: String = "",
 
+    @OneToMany(
+        targetEntity = BookEntity::class,
+        cascade = [ CascadeType.ALL],
+        fetch = FetchType.LAZY,
+        mappedBy="genre"
+    )
+    var books: MutableList<BookEntity> = mutableListOf()
+
 )

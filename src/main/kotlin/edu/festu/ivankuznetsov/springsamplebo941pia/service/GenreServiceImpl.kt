@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service
 class GenreServiceImpl(
     private val genreRepository: GenreRepository,
 ): GenreService {
+    override fun save(genre: GenreEntity) {
+        genreRepository.save(genre)
+    }
 
     override fun findAll(): List<GenreEntity> {
         return genreRepository.findAll()
@@ -17,5 +20,13 @@ class GenreServiceImpl(
 
     override fun findByTitle(title: String): GenreEntity {
         return genreRepository.findOne(Example.of(GenreEntity(genre = title))).orElseThrow()
+    }
+
+    override fun getById(id: Long): GenreEntity {
+        return genreRepository.findById(id).orElseThrow()
+    }
+
+    override fun delete(genre: GenreEntity) {
+        genreRepository.delete(genre)
     }
 }

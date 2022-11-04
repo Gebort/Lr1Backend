@@ -1,5 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.controller
 
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.BookEntity
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.AuthorService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BookService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.GenreService
@@ -8,15 +9,13 @@ import org.springframework.ui.Model
 import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 
-/**
- * контроллер оценок
- * */
 @Controller
 class BookController(
     private val bookService: BookService,
     private val authorService: AuthorService,
-    private val genreService: GenreService
+    private val genreService: GenreService,
 ) {
     @GetMapping("/")
     fun getDefault(model: Model): String {
@@ -27,38 +26,45 @@ class BookController(
         model["books"] = bookService.getAll()
         return "books"
     }
-    @GetMapping("/books/{genreTitle}")
-    fun getBooks(@PathVariable genreTitle: String, model: Model): String {
-        genreService.findByTitle(genreTitle).let {
-            model["genre"] = it
-            model["books"] = bookService.getAllByGenre(it)
-        }
-        return "books"
-    }
-    @GetMapping("/authors")
-    fun getAuthors(model: Model): String {
-        model["authors"] = authorService.getAll()
-        return "authors"
-    }
-
-    @GetMapping("/authors/{authorId}")
-    fun getAuthors(@PathVariable authorId: String, model: Model): String {
-        model["author"] = authorService.getById(authorId.toLong())
-        return "author_page"
-    }
-
-       @GetMapping("/rating/{bookId}")
+    @GetMapping("/rating/{bookId}")
     fun getBookRating(@PathVariable bookId: String, model: Model): String {
         model["book"] = bookService.getById(bookId.toLong())
         return "books_rating"
     }
-    @GetMapping("/genres")
-    fun getGenres(model: Model): String {
-        model["genres"] = genreService.findAll().map { genre ->
-            Pair(genre, bookService.getAllByGenre(genre).size)
-        }
-        return "genres"
+
+    @GetMapping("/books/edit/{bookId}")
+    fun editBook(@PathVariable bookId: Long, model: Model): String{
+        model["book"] = bookService.getById(bookId)
+        model["authors_list"] = authorService.getAll()
+        model["genres_list"] = genreService.findAll()
+        return "book_edit"
     }
 
+    @PostMapping("/books/edit")
+    fun editBookPost(book: BookEntity): String{
+        bookService.save(book)
+        return "redirect:/books"
+    }
+
+    @GetMapping("/books/create")
+    fun createBook(model: Model): String{
+        model["book"] = BookEntity()
+        model["authors_list"] = authorService.getAll()
+        model["genres_list"] = genreService.findAll()
+        return "book_edit"
+    }
+
+    @PostMapping("/books/create")
+    fun createBookPost(book: BookEntity): String{
+        bookService.save(book)
+        return "redirect:/books"
+    }
+
+    @GetMapping("/books/delete/{bookId}")
+    fun deleteBook(@PathVariable bookId: Long): String {
+        val book = bookService.getById(bookId)
+        bookService.delete(book)
+        return "redirect:/books"
+    }
 
 }

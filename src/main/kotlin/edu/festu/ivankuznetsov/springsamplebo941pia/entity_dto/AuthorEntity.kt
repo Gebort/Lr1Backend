@@ -20,7 +20,7 @@ class AuthorEntity(
         joinColumns = [JoinColumn(name = "author_id")],
         inverseJoinColumns = [JoinColumn(name = "book_id")],
     )
-    val books: Set<BookEntity> = setOf(),
+    val books: List<BookEntity> = listOf(),
 ) {
 
 }

@@ -12,6 +12,8 @@
     </div>
     <div>
       <h1>All authors</h1>
+      <button class="create"><a th:href="@{/authors/create}">New author</a></button>
+      <div><br></div>
       <th:block th:each="author:${authors}">
         <div>
           <a th:href="@{'/authors/'+${author.getAuthorId()}}"

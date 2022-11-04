@@ -1,7 +1,5 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto
 
-import java.text.NumberFormat
-import java.util.*
 import javax.persistence.*
 import kotlin.math.roundToInt
 
@@ -16,9 +14,11 @@ class BookEntity(
 
     val title: String? = null,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
-    @MapsId("genreId")
-    @JoinColumn(name = "genre_id")
+    @ManyToOne(
+        targetEntity = GenreEntity::class,
+        cascade = [ CascadeType.PERSIST],
+        fetch = FetchType.LAZY,
+    )
     val genre: GenreEntity? = null,
 
     @ManyToMany
@@ -27,7 +27,7 @@ class BookEntity(
         joinColumns = [JoinColumn(name = "book_id")],
         inverseJoinColumns = [JoinColumn(name = "author_id")],
     )
-    val authors: Set<AuthorEntity> = setOf(),
+    val authors: List<AuthorEntity> = listOf(),
 
     @OneToMany(mappedBy = "book")
     val ratings: List<BookRating> = listOf(),
@@ -40,12 +40,12 @@ class BookEntity(
 
     @delegate:Transient
     val averageRating: Int by lazy {
-        ratings
+        val rat = ratings
             .asSequence()
             .map { it.rating }
             .filterNotNull()
             .average()
-            .roundToInt()
+        if (rat.isNaN()) 0 else rat.roundToInt()
     }
 
 }

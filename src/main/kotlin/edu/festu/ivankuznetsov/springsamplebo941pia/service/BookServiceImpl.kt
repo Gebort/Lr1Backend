@@ -24,4 +24,12 @@ class BookServiceImpl(
     override fun getAllByGenre(genre: GenreEntity): List<BookEntity> {
         return bookRepository.findAll(Example.of(BookEntity(genre = genre)))
     }
+
+    override fun delete(book: BookEntity) {
+        bookRepository.delete(book)
+    }
+
+    override fun save(book: BookEntity) {
+        bookRepository.save(book)
+    }
 }

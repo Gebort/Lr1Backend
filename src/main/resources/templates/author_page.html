@@ -11,16 +11,18 @@
   <a href="/genres">Genres</a>
 </div>
 <div>
-      <h1 th:text="${author.getFirstName() + ' ' + author.getLastName()}"></h1>
-      <h3 th:text="${author.getBooks().size + ' book(s): '}"></h3>
-      <th:block th:each="book:${author.getBooks()}">
-        <div>
-            <a th:href="@{'/rating/'+${book.getBookId()}}"
-             th:text="${book.getTitle()}"></a>
-            <p th:text="${book.getGenre().getGenre() + ', rating -  ' + book.getAverageRating()}"></p>
-            <p>===============================</p>
-        </div>
-      </th:block>
-</div>
+        <h1 th:text="${author.getFirstName() + ' ' + author.getLastName()}"></h1>
+        <h3 th:text="${author.getBooks().size + ' book(s): '}"></h3>
+        <button><a th:href="@{'/authors/edit/'+${author.authorId}}">Edit</a></button>
+        <button><a th:href="@{'/authors/delete/'+${author.authorId}}">Delete</a></button>
+        <th:block th:each="book:${author.getBooks()}">
+            <div>
+                <p>===============================</p>
+                <a th:href="@{'/rating/'+${book.getBookId()}}"
+                th:text="${book.getTitle()}"></a>
+                <p th:text="${book.getGenre().getGenre() + ', rating -  ' + book.getAverageRating()}"></p>
+            </div>
+        </th:block>
+    </div>
 </body>
 </html>

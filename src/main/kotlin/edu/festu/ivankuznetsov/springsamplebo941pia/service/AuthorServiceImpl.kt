@@ -17,4 +17,12 @@ class AuthorServiceImpl(
         return authorRepository.findById(authorId).orElseThrow()
     }
 
+    override fun save(author: AuthorEntity) {
+        authorRepository.save(author)
+    }
+
+    override fun delete(author: AuthorEntity) {
+        authorRepository.delete(author)
+    }
+
 }
