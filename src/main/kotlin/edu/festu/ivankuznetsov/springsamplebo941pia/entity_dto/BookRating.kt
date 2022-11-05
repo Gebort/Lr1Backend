@@ -10,16 +10,20 @@ class BookRating(
     @Column(name = "rating_id", nullable = false)
     val ratingId: Long? = null,
 
-    @ManyToOne
-    @MapsId("buyerId")
-    @JoinColumn(name = "buyer_id")
+    @ManyToOne(
+        targetEntity = BuyerEntity::class,
+        cascade = [ CascadeType.PERSIST],
+        fetch = FetchType.LAZY,
+    )
     val buyer: BuyerEntity? = null,
 
-    @ManyToOne
-    @MapsId("bookId")
-    @JoinColumn(name = "book_id")
+    @ManyToOne(
+        targetEntity = BookEntity::class,
+        cascade = [ CascadeType.PERSIST],
+        fetch = FetchType.LAZY,
+    )
     val book: BookEntity? = null,
 
     //from 1 to 5
-    val rating: Double? = null,
+    val rating: Int? = null,
 )

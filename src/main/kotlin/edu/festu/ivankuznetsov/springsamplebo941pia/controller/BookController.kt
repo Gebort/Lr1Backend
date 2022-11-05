@@ -26,11 +26,6 @@ class BookController(
         model["books"] = bookService.getAll()
         return "books"
     }
-    @GetMapping("/rating/{bookId}")
-    fun getBookRating(@PathVariable bookId: String, model: Model): String {
-        model["book"] = bookService.getById(bookId.toLong())
-        return "books_rating"
-    }
 
     @GetMapping("/books/edit/{bookId}")
     fun editBook(@PathVariable bookId: Long, model: Model): String{
