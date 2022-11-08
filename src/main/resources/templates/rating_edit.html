@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit rating</title>
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+<div th:if="${rating.ratingId != null}"><h2>Edit the rating</h2></div>
+<div th:unless="${rating.ratingId != null}"><h2>New rating</h2></div>
+<div class="container">
+  <form action="#" th:action="@{/rating/edit}" th:object="${rating}" method="post">
+    <div>
+      <input type="hidden" th:field="*{ratingId}" />
+      <div>
+        <label class="label" for="rating">Rating</label>
+        <input class="input" type="number" th:field="*{rating}" id="rating" placeholder="Rating">
+      </div>
+    </div>
+    <br/>
+    <div>
+      <label class="label">Book</label>
+      <select class="input" th:field="*{book}">
+        <option th:each="book1 : ${books_list}"
+                th:value="${book1.bookId}"
+                th:text="${book1.title}"></option>
+      </select>
+    </div>
+    <br/>
+    <div>
+      <label class="label">Buyer</label>
+      <select class="input" th:field="*{buyer}">
+        <option th:each="buyer1 : ${buyers_list}"
+                th:value="${buyer1.buyerId}"
+                th:text="${buyer1.firstName} + ' ' + ${buyer1.lastName}"></option>
+      </select>
+    </div>
+<br/>
+
+<div th:if="${rating.ratingId != null}"><input type="submit" value="Edit"></div>
+<div th:unless="${rating.ratingId != null}"><input type="submit" value="Create"></div>
+</form>
+</div>
+</body>
+</html>

@@ -18,3 +18,6 @@ interface BuyerRepository: JpaRepository<BuyerEntity, Long>
 
 @Repository
 interface GenreRepository: JpaRepository<GenreEntity, Long>
+
+@Repository
+interface GenreCountRepository: JpaRepository<ViewGenreCount, Long>

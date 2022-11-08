@@ -14,7 +14,10 @@ class AuthorEntity(
 
     val lastName: String? = null,
 
-    @ManyToMany
+    @ManyToMany(
+        fetch = FetchType.LAZY,
+        cascade = [ CascadeType.PERSIST],
+    )
     @JoinTable(
         name = "author_book",
         joinColumns = [JoinColumn(name = "author_id")],

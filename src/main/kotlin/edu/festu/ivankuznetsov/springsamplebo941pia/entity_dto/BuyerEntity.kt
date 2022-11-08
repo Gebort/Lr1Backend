@@ -14,6 +14,10 @@ class BuyerEntity(
 
     val lastName: String? = null,
 
-    @OneToMany(mappedBy = "buyer")
+    @OneToMany(
+        mappedBy = "buyer",
+        cascade = [ CascadeType.ALL],
+        fetch = FetchType.LAZY,
+    )
     val ratings: List<BookRating> = listOf(),
 )

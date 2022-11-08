@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit author</title>
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+<div th:if="${author.authorId != null}"><h2>Edit the author</h2></div>
+<div th:unless="${author.authorId != ''}"><h2>New author</h2></div>
+<div class="container">
+  <form action="#" th:action="@{/authors/edit}" th:object="${author}" method="post">
+    <div>
+      <input type="hidden" th:field="*{authorId}" />
+      <div>
+        <label class="label" for="firstName">First name</label>
+        <input class="input" type="text" th:field="*{firstName}" id="firstName" placeholder="First name">
+      </div>
+      <div>
+        <label class="label" for="lastName">Last name</label>
+        <input class="input" type="text" th:field="*{lastName}" id="lastName" placeholder="Last name">
+      </div>
+    </div>
+    <br/>
+    <div>
+      <label class="label"><b>Books:</b></label>
+      <th:block th:each="book: ${books_list}">
+        <div>
+          <input class="checkbox" type="checkbox" th:field="*{books}" th:text="${book.title}" th:value="${book.bookId}" />
+        </div>
+      </th:block>
+    </div>
+
+    <br/>
+
+    <div th:if="${author.authorId != null}"><input type="submit" value="Edit"></div>
+    <div th:unless="${author.authorId != null}"><input type="submit" value="Create"></div>
+  </form>
+</div>
+</body>
+</html>

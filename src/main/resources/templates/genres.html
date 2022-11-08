@@ -14,10 +14,10 @@
       <h1>Genres</h1>
       <button class="create"><a th:href="@{/genres/create}">New genre</a></button>
       <div><br></div>
-      <th:block th:each="pair:${genres}">
+      <th:block th:each="view:${genres}">
         <div>
-          <a th:href="@{'/books/'+${pair.getFirst().getGenre()}}"
-             th:text="${pair.getFirst().getGenre() + ' - ' + pair.getSecond() + ' book(s)'}"></a>
+          <a th:href="@{'/books/'+${view.genre}}"
+             th:text="${view.genre + ' - ' + view.count + ' book(s)'}"></a>
         </div>
       </th:block>
     </div>
