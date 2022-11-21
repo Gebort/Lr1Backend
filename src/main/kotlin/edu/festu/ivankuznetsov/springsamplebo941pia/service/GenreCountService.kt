@@ -1,6 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.service
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.ViewGenreCount
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.ViewGenreCount
 
 interface GenreCountService {
 

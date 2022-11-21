@@ -1,6 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.controller
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.AuthorEntity
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.AuthorEntity
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.AuthorService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BookService
 import org.springframework.stereotype.Controller

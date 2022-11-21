@@ -1,4 +1,4 @@
-package edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto
+package edu.festu.ivankuznetsov.springsamplebo941pia.entity
 
 import org.hibernate.annotations.Immutable
 import org.hibernate.annotations.Subselect

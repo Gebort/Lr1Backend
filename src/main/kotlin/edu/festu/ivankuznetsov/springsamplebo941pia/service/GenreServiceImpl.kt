@@ -1,7 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.service
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.GenreEntity
-import edu.festu.ivankuznetsov.springsamplebo941pia.repository.BookRepository
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.GenreEntity
 import edu.festu.ivankuznetsov.springsamplebo941pia.repository.GenreRepository
 import org.springframework.data.domain.Example
 import org.springframework.stereotype.Service

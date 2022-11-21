@@ -1,6 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.controller
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.BookEntity
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.BookEntity
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.AuthorService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BookService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.GenreService
@@ -25,6 +25,12 @@ class BookController(
     fun getBooks(model: Model): String {
         model["books"] = bookService.getAll()
         return "books"
+    }
+
+    @GetMapping("/public/books")
+    fun getPublicBooks(model: Model): String {
+        model["books"] = bookService.getAll()
+        return "public_books"
     }
 
     @GetMapping("/books/edit/{bookId}")

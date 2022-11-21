@@ -1,6 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.controller
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.BookRating
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.BookRating
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BookService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BuyerService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.RatingService

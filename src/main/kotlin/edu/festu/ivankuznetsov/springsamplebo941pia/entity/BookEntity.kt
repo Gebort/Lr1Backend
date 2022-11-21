@@ -1,4 +1,4 @@
-package edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto
+package edu.festu.ivankuznetsov.springsamplebo941pia.entity
 
 import javax.persistence.*
 import kotlin.math.roundToInt

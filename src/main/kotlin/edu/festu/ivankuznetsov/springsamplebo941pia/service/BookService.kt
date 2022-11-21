@@ -1,7 +1,7 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.service
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.BookEntity
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.GenreEntity
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.BookEntity
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.GenreEntity
 
 interface BookService {
     fun getAll(): List<BookEntity>

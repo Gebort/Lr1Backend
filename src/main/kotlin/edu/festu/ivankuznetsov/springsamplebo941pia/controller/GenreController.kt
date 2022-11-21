@@ -1,6 +1,6 @@
 package edu.festu.ivankuznetsov.springsamplebo941pia.controller
 
-import edu.festu.ivankuznetsov.springsamplebo941pia.entity_dto.GenreEntity
+import edu.festu.ivankuznetsov.springsamplebo941pia.entity.GenreEntity
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BookService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.GenreCountService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.GenreService
