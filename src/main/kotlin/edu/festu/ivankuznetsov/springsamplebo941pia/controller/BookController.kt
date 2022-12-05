@@ -4,12 +4,16 @@ import edu.festu.ivankuznetsov.springsamplebo941pia.entity.BookEntity
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.AuthorService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.BookService
 import edu.festu.ivankuznetsov.springsamplebo941pia.service.GenreService
+import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.servlet.ViewResolver
+import org.springframework.web.servlet.view.InternalResourceViewResolver
+
 
 @Controller
 class BookController(

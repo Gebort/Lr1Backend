@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Books</title>
+</head>
+<body>
+<div>
+  <h1>All books</h1>
+  <th:block th:each="book:${books}">
+    <div>
+      <h3 th:text="${book.getTitle() + ', ' + book.getGenre().getGenre()}"></h3>
+      <p th:text="${'Total ratings -  ' + book.getTotalRatings() + ', average - ' + book.getAverageRating()}"></p>
+      <p th:text="${'Authors: '}"></p>
+      <th:block th:each="author:${book.getAuthors()}">
+        <div>
+          <p th:text="${author.getFirstName() + ' ' + author.getLastName() + ' '}"></p>
+        </div>
+      </th:block>
+      <p>===============================</p>
+    </div>
+  </th:block>
+</div>
+</body>
+</html>

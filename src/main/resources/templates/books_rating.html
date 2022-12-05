@@ -5,11 +5,7 @@
         <title th:text="${book.getTitle()}"></title>
     </head>
     <body>
-        <div>
-            <a href="/books">Books</a>
-            <a href="/authors">Authors</a>
-            <a href="/genres">Genres</a>
-        </div>
+    <div th:replace="nav_bar::navbar"></div>
         <div>
             <h1 th:text="${book.getTitle()}"></h1>
             <button><a th:href="@{'/books/edit/'+${book.bookId}}">Edit</a></button>
